@@ -19,7 +19,6 @@ const Div = styled.div`
   line-height: 48px;
   font-family: 'Be Vietnam Pro', sans-serif;
   color: rgb(61 61 61);
-}
 `
 
 const Textarea = styled.textarea`

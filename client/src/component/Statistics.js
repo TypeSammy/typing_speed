@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 
 const H2 = styled.h2`
@@ -18,23 +17,6 @@ const Div = styled.div`
   height: 500px;
   padding: 30px;
   flex-direction: column;
-`
-
-const Input = styled.input`
-  width: 200px;
-  align-self: center;
-  padding: 10px;
-  border: none;
-  border-radius: 16px;
-  background: var(--beige);
-  height: 20px;
-  width: 362px;
-  text-align: center;
-  font-size: 1.2em;
-  padding: 17px;
-  ::placeholder {
-    color: rgb(145, 170, 157);
-  }
 `
 
 const Button = styled.button`
@@ -63,17 +45,6 @@ const Highlight = styled.span`
 function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDisplay }) {
   // const [userName, setUserName] = useState(null)
   const accuracy = statistics.accuracy < 1 ? statistics.accuracy.toFixed(2).slice(2) : 100
-  let randomName = 'bob'
-  if (statistics.wpm != 0) {
-    randomName = `User_${Math.floor(Math.random() * 4000)}`
-    // setUserName(randomName)
-  }
-
-
-  const submit = () => {
-    // capture userName and send into database
-    // re-render leaderboard with an axios request?
-  }
 
   const again = () => {
     setMinutesDisplay(true)
@@ -84,11 +55,7 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
     <Div id={statsDisplay ? null : 'hidden'}>
       <H2>Time's up!</H2>
       <p>You typed with <Highlight>{statistics.wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
-      <Input className='username' placeholder={randomName} ></Input>
-      <span>
-        <Button onClick={submit}>Submit your score</Button>
-        <Button onClick={again}>Try again</Button>
-      </span>
+      <Button onClick={again}>Try again</Button>
     </Div>
   )
 }
