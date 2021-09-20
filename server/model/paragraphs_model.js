@@ -3,7 +3,7 @@ const db = require('../db/db')
 const Paragraphs = {
   limit15() {
     const sql = `
-    SELECT * FROM paragraphs ORDER BY RANDOM() LIMIT 5
+    SELECT * FROM paragraphs ORDER BY RANDOM() LIMIT 15
     `
     return db.query(sql)
       .then(res => {
