@@ -84,7 +84,7 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
     <Div id={statsDisplay ? null : 'hidden'}>
       <H2>Time's up!</H2>
       <p>You typed with <Highlight>{statistics.wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
-      <Input className='username' placeholder={userName} ></Input>
+      <Input className='username' placeholder={randomName} ></Input>
       <span>
         <Button onClick={submit}>Submit your score</Button>
         <Button onClick={again}>Try again</Button>
