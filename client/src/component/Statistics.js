@@ -66,8 +66,9 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
   let randomName = 'bob'
   if (statistics.wpm != 0) {
     randomName = `User_${Math.floor(Math.random() * 4000)}`
+    // setUserName(randomName)
   }
-  // setUserName('randomName')
+
 
   const submit = () => {
     // capture userName and send into database
@@ -83,7 +84,7 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
     <Div id={statsDisplay ? null : 'hidden'}>
       <H2>Time's up!</H2>
       <p>You typed with <Highlight>{statistics.wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
-      <Input className='username' placeholder={randomName} ></Input>
+      <Input className='username' placeholder={userName} ></Input>
       <span>
         <Button onClick={submit}>Submit your score</Button>
         <Button onClick={again}>Try again</Button>
