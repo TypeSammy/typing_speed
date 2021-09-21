@@ -38,11 +38,11 @@ const Div = styled.div`
   right: 0;
   top: 200px;
 `
-const Div2 = styled.div`
-  position: fixed;
+const BottomDiv = styled.div`
+  position: relative;
   left: 0;
   right: 0;
-  bottom: -20px;
+  bottom: -350px;
   z-index: -1;
 `
 
@@ -165,14 +165,14 @@ function App() {
           setStatsDisplay={setStatsDisplay}
         />
       </Div>
-      <Div2>
+      <BottomDiv>
         <H1>SPEED</H1>
         <H2>TEST</H2>
         <Countdown
           seconds={seconds}
           isTimerOn={isTimerOn}
         />
-      </Div2>
+      </BottomDiv>
     </Section>
   )
 }
