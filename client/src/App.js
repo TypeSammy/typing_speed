@@ -51,26 +51,22 @@ function App() {
     wpm: 0,
     accuracy: 0
   }
-  // State for typing section
+  // State for typing speed
   const [paragraphs, setParagraphs] = useState([])
   const [userInput, setUserInput] = useState([])
-
+  const [statistics, setStatistics] = useState(defaultStats)
   // State for visibility components
   const [minutesDisplay, setMinutesDisplay] = useState(true)
   const [textAreaDisplay, setTextAreaDisplay] = useState(false)
   const [statsDisplay, setStatsDisplay] = useState(false)
-
   // State for inacuracy count
   const [inaccuracteCount, setInaccurateCount] = useState(0)
-
   // State for countdown
   const [seconds, setSeconds] = useState(null)
   const [min, setMin] = useState(0)
   const [isTimerOn, setIsTimerOn] = useState(false)
-
+  // State for interval ID
   const [intervalId, setIntervalId] = useState(null)
-
-  const [statistics, setStatistics] = useState(defaultStats)
 
   function getParagraphs(min) {
     const amount = {
@@ -104,19 +100,24 @@ function App() {
     }
 
     // increment inaccurate amount
+    const inputType = e.nativeEvent.inputType
     newValue.forEach((letter, i) => {
-      if (e.nativeEvent.inputType === 'insertText') {
+      if (inputType === 'insertText') {
         letter !== paragraphs[i] ? setInaccurateCount(inaccuracteCount + 1) : setInaccurateCount(inaccuracteCount)
       }
     })
 
+    // handles auto scrolling
     const allSpanLetter = document.querySelectorAll('.letter')
     const currentInputLocation = allSpanLetter[userInput.length].getBoundingClientRect().right
     const nextInputLocation = allSpanLetter[userInput.length + 1].getBoundingClientRect().right
 
-    if (currentInputLocation > nextInputLocation) {
+    if (inputType === 'deleteContentBackward' && currentInputLocation > nextInputLocation) {
+      document.querySelector('.paragraphs').scrollTop -= 46
+    } else if (currentInputLocation > nextInputLocation) {
       document.querySelector('.paragraphs').scrollTop += 46
     }
+
   }
 
   if (intervalId != null) {

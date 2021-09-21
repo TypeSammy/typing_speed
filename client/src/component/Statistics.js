@@ -32,9 +32,9 @@ const Button = styled.button`
   font-size: 1em;
   font-weight: 600;
   align-self: center;
+  transition: 0.35s;
   &:hover {
-    background: none;
-    border: solid 1.5px var(--moss);
+    background: var(--darkmoss);
   }
 `
 
@@ -45,7 +45,6 @@ const Highlight = styled.span`
 `
 
 function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDisplay }) {
-  // const [userName, setUserName] = useState(null)
   const accuracy = statistics.accuracy < 1 ? statistics.accuracy.toFixed(2).slice(2) : 100
 
   const again = () => {

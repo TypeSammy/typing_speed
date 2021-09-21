@@ -11,9 +11,9 @@ const Button = styled.button`
   color: rgb(255 255 255);
   font-size: 1em;
   font-weight: 600;
+  transition: 0.35s;
   &:hover {
-    background: none;
-    border: solid 1.5px var(--moss);
+    background: var(--darkmoss);
   }
 `
 
