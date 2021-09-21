@@ -85,11 +85,10 @@ function App() {
         setParagraphs(array.join(' ').split(''))
       })
       .then(setMinutesDisplay(false), setTextAreaDisplay(true)) // TODO check if i can use switch feature?
-      .then(setSeconds(min * 60), setMin(min))
+      .then(setSeconds(5), setMin(min))
   }
 
   function handleUserInput(e) {
-    // check if timer has started
     const newValue = e.target.value.split('')
     setUserInput(newValue)
 
@@ -134,6 +133,7 @@ function App() {
     setParagraphs([])
     setUserInput([])
     setInaccurateCount(0)
+    document.querySelector('textarea').value = null
     setStatistics({
       wpm: (userInput.length / 5) / min,
       accuracy: (userInput.length - inaccuracteCount) / userInput.length
@@ -141,7 +141,6 @@ function App() {
     setStatsDisplay(true)
     setTextAreaDisplay(false)
     setMin(0)
-
   }
 
   return (

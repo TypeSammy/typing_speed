@@ -12,10 +12,10 @@ const Div = styled.div`
   justify-content: center;
   gap: 16px;
   background: var(--khaki);
-  border-radius: 3em 1em 3em 1em;
   color: rgb(255 255 255);
-  height: 500px;
-  padding: 30px;
+  height: 610px;
+  border-radius: 3em 1em 3em 1em;
+  width: 600px;
   flex-direction: column;
 `
 
