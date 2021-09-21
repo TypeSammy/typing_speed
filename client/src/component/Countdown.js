@@ -12,6 +12,8 @@ const Div = styled.div`
   border-top: 1px solid var(--moss);
   border-bottom: 1px solid var(--moss);
   padding: 0.5em;
+  position: relative;
+  top: -70px;
 `
 
 const P = styled.p`

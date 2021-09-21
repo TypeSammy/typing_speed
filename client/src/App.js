@@ -1,18 +1,49 @@
 import './App.css';
 import { useState } from 'react'
 import SetMinutes from './component/SetMinutes.js'
-import './component/TypingSpeed.css'
 import TextArea from './component/TextArea.js'
 import Countdown from "./component/Countdown"
 import axios from 'axios'
 import styled from 'styled-components'
 import Statistics from './component/Statistics'
 
+const Section = styled.section`
+  text-align: -webkit-center;
+  position: relative;
+  top: -40px;
+`
+
 const H1 = styled.h1`
   color: var(--chocolate);
-  margin: 40px 0 20px 0;
-  font-size: 3.5em;
+  margin: 0;
+  font-size: 17em;
   font-family: 'Abril Fatface';
+  font-weight: 200;
+`
+
+const H2 = styled.h2`
+  color: var(--chocolate);
+  margin: 0;
+  font-size: 4em;
+  font-family: 'Abril Fatface';
+  font-weight: 200;
+  letter-spacing: 49px;
+  position: relative;
+  top: -70px;
+`
+
+const Div = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 200px;
+`
+const Div2 = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  z-index: -1;
 `
 
 function App() {
@@ -43,9 +74,9 @@ function App() {
 
   function getParagraphs(min) {
     const amount = {
-      1: 15,
-      3: 30,
-      5: 50
+      1: 5,
+      3: 20,
+      5: 30
     }
     axios.get(`/api/paragraphs/${amount[min]}`)
       .then(res => {
@@ -114,30 +145,36 @@ function App() {
   }
 
   return (
-    <div className='TypingSpeed'>
-      <H1>TYPING SPEED TEST</H1>
-      <Countdown
-        seconds={seconds}
-        isTimerOn={isTimerOn}
-      />
-      <SetMinutes
-        getParagraphs={getParagraphs}
-        btnDisplay={minutesDisplay}
-      />
-      <TextArea
-        paragraphs={paragraphs}
-        userInput={userInput}
-        typingDisplay={textAreaDisplay}
-        handleUserInput={handleUserInput}
-        inaccuracteCount={inaccuracteCount}
-      />
-      <Statistics
-        statistics={statistics}
-        statsDisplay={statsDisplay}
-        setMinutesDisplay={setMinutesDisplay}
-        setStatsDisplay={setStatsDisplay}
-      />
-    </div>
+    <Section>
+      <H1>TYPING</H1>
+      <Div className='content-container'>
+        <SetMinutes
+          getParagraphs={getParagraphs}
+          btnDisplay={minutesDisplay}
+        />
+        <TextArea
+          paragraphs={paragraphs}
+          userInput={userInput}
+          typingDisplay={textAreaDisplay}
+          handleUserInput={handleUserInput}
+          inaccuracteCount={inaccuracteCount}
+        />
+        <Statistics
+          statistics={statistics}
+          statsDisplay={statsDisplay}
+          setMinutesDisplay={setMinutesDisplay}
+          setStatsDisplay={setStatsDisplay}
+        />
+      </Div>
+      <Div2>
+        <H1>SPEED</H1>
+        <H2>TEST</H2>
+        <Countdown
+          seconds={seconds}
+          isTimerOn={isTimerOn}
+        />
+      </Div2>
+    </Section>
   )
 }
 

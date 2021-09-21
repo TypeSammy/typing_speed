@@ -3,12 +3,13 @@ import styled from 'styled-components'
 const Section = styled.section`
   background: var(--khaki);
   border-radius: 3em 1em 3em 1em;
-  height: 500px
+  height: 610px;
+  width: 600px;
 `
 
 const Div = styled.div`
-  height: 420px;
-  width: 85%;
+  width: 70%;
+  height: 480px;
   margin: 0 auto;
   font-size: 1.5em;
   overflow-y: scroll;
@@ -18,11 +19,11 @@ const Div = styled.div`
   text-align: left;
   line-height: 48px;
   font-family: 'Be Vietnam Pro', sans-serif;
-  color: rgb(61 61 61);
+  color: rgb(121 85 72);
 `
 
 const Textarea = styled.textarea`
-  height: 420px;
+  height: 480px;
   margin: 0 auto;
   width: 85%;
   letter-spacing: 6px;
@@ -38,12 +39,12 @@ const Textarea = styled.textarea`
 `
 
 const Span = styled.span`
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1px solid var(--khaki);
   padding: 0 2px;
 `
 
-function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput, handleStartCountdown }) {
+function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput }) {
   // const splitParagraph = paragraphs.split('')
   const correctCol = 'rgb(165 213 148)'
   const incorrectCol = 'rgb(254 139 139)'
