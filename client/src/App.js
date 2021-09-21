@@ -85,7 +85,7 @@ function App() {
         setParagraphs(array.join(' ').split(''))
       })
       .then(setMinutesDisplay(false), setTextAreaDisplay(true)) // TODO check if i can use switch feature?
-      .then(setSeconds(5), setMin(min))
+      .then(setSeconds(min * 60), setMin(min))
   }
 
   function handleUserInput(e) {

@@ -5,8 +5,6 @@ const PORT = process.env.PORT || (process.env.NODE_ENV === 'production' && 3000)
 const path = require('path')
 app.use(express.json())
 
-const paragraphsController = require('./controllers/paragraphs_controller.js')
-
 app.use('/api/paragraphs/:amount', (req, res) => {
   const num = req.params
   Paragraphs.limit(num.amount)
