@@ -5,8 +5,8 @@ const Button = styled.button`
   border: none;
   margin: 0.5em;
   background: var(--moss);
-  width: 33%;
-  height: 13%;
+  width: 200px;
+  height: 80px;
   border-radius: 15px;
   color: rgb(255 255 255);
   font-size: 1em;
@@ -27,6 +27,7 @@ const Div = styled.div`
   border-radius: 3em 1em 3em 1em;
   width: 600px;
   flex-direction: column;
+  margin: 0 auto;
 `
 
 function SetMinutes({ getParagraphs, btnDisplay }) {

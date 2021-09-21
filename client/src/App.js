@@ -10,7 +10,7 @@ import Statistics from './component/Statistics'
 const Section = styled.section`
   text-align: -webkit-center;
   position: relative;
-  top: -40px;
+  top: -60px;
 `
 
 const H1 = styled.h1`
@@ -33,10 +33,10 @@ const H2 = styled.h2`
 `
 
 const Div = styled.div`
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
-  top: 200px;
+  top: 260px;
 `
 const BottomDiv = styled.div`
   position: relative;

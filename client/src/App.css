@@ -11,6 +11,11 @@ font-family: 'Be Vietnam Pro', sans-serif; */
   --chocolate: #a0614a;
 }
 
+* {
+  margin:0;
+  padding:0;
+}
+
 .App {
   text-align: center;
   margin: 0 auto;
@@ -21,6 +26,7 @@ body {
   background: linear-gradient(to top left, var(--beige), rgb(255 244 230)) fixed;
   margin: 0 auto;
   font-family: 'Be Vietnam Pro', sans-serif;
+  text-align: center;
 }
 p {
   margin: 0;

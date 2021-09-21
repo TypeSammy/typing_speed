@@ -5,6 +5,7 @@ const Section = styled.section`
   border-radius: 3em 1em 3em 1em;
   height: 610px;
   width: 600px;
+  margin: 0 auto;
 `
 
 const Div = styled.div`

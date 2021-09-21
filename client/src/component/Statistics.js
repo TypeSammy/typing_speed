@@ -17,6 +17,7 @@ const Div = styled.div`
   border-radius: 3em 1em 3em 1em;
   width: 600px;
   flex-direction: column;
+  margin: 0 auto;
 `
 
 const Button = styled.button`
@@ -24,11 +25,12 @@ const Button = styled.button`
   border: none;
   margin: 0.5em;
   background: var(--moss);
-  width: 12em;
-  height: 3em;
+  width: 200px;
+  height: 80px;
   border-radius: 15px;
   color: rgb(255 255 255);
   font-size: 1em;
+  font-weight: 600;
   align-self: center;
   &:hover {
     background: none;
@@ -55,7 +57,7 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
     <Div id={statsDisplay ? null : 'hidden'}>
       <H2>Time's up!</H2>
       <p>You typed with <Highlight>{statistics.wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
-      <Button onClick={again}>Try again</Button>
+      <Button onClick={again}>TRY AGAIN</Button>
     </Div>
   )
 }
