@@ -46,8 +46,8 @@ const Span = styled.span`
 
 function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput }) {
   // const splitParagraph = paragraphs.split('')
-  const correctCol = 'rgb(165 213 148)'
-  const incorrectCol = 'rgb(254 139 139)'
+  const correctCol = 'rgb(189 223 177)'
+  const incorrectCol = 'rgb(252 186 164)'
 
   return (
     <Section className='game-container' id={typingDisplay ? null : 'hidden'}>
