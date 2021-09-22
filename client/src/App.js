@@ -120,12 +120,14 @@ function App() {
 
   }
 
+  // Checks if there is an Interval ID & if the time has reached 0
   if (intervalId != null) {
     if (seconds === 0) {
       end()
     }
   }
 
+  // Resets most State back to default value
   function end() {
     clearInterval(intervalId)
     setIntervalId(null)

@@ -46,6 +46,7 @@ const Highlight = styled.span`
 
 function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDisplay }) {
   const accuracy = statistics.accuracy < 1 ? statistics.accuracy.toFixed(2).slice(2) : 100
+  const wpm = statistics.wpm % 1 === 0 ? statistics.wpm : statistics.wpm.toFixed(1)
 
   const again = () => {
     setMinutesDisplay(true)
@@ -55,7 +56,7 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
   return (
     <Div id={statsDisplay ? null : 'hidden'}>
       <H2>Time's up!</H2>
-      <p>You typed with <Highlight>{statistics.wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
+      <p>You typed with <Highlight>{wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
       <Button onClick={again}>TRY AGAIN</Button>
     </Div>
   )
