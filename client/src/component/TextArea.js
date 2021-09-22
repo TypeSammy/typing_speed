@@ -50,6 +50,10 @@ function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput }) {
   const correctCol = 'rgb(189 223 177)'
   const incorrectCol = 'rgb(252 186 164)'
 
+  if (typingDisplay) {
+    document.querySelector('textarea').focus()
+  }
+
   return (
     <Section className='game-container' id={typingDisplay ? null : 'hidden'}>
       <Div className='paragraphs'>
