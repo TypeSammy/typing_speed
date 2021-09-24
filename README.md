@@ -86,3 +86,4 @@ Give this a star to show your support.
 ## 📬 Contact me on
 - [LinkedIn](https://www.linkedin.com/in/samantha-gold-dev/)
 - [E-mail](mailto:typesammy@gmail.com)
+- [Instagram](https://www.instagram.com/typesammy_)
