@@ -27,6 +27,15 @@ The timer starts on the users first key stroke.
 ## 👾 Try it out
 - [On Heroku](https://enigmatic-springs-07407.herokuapp.com/)
 
+## 📥 Or clone the repo
+Clone the repo down by copying and pasting the below in your chosen directory then download it's dependencies
+```
+# cloning the repo:
+git clone https://github.com/TypeSammy/typing_speed.git
+
+# installing dependencies
+# npm install
+```
 
 ## 🐛 Bugs
 - On text area auto scroll, if back spaced twice the scroll will go back up, down then up again
@@ -37,7 +46,7 @@ The timer starts on the users first key stroke.
 - The score board will display top 10 users with the highest WPM count.
 
 ## 📸 Screenshot
-![](https://github.com/TypeSammy/tictactoe/blob/main/tictactoe-screenshot.png)
+![](https://github.com/TypeSammy/typing_speed/blob/main/client/public/typing-speed.png)
 
 ***
 
