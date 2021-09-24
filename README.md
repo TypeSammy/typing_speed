@@ -34,7 +34,7 @@ Clone the repo down by copying and pasting the below in your chosen directory th
 git clone https://github.com/TypeSammy/typing_speed.git
 
 # installing dependencies
-# npm install
+npm install
 ```
 
 ## 🐛 Bugs
