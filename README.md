@@ -30,10 +30,10 @@ The timer starts on the users first key stroke.
 ## 📥 Or clone the repo
 Clone the repo down by copying and pasting the below in your chosen directory then download it's dependencies
 ```
-# cloning the repo:
+# Cloning
 git clone https://github.com/TypeSammy/typing_speed.git
 
-# installing dependencies
+# For dependencies
 npm install
 ```
 
