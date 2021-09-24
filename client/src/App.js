@@ -88,12 +88,12 @@ function App() {
     const newValue = e.target.value.split('')
     setUserInput(newValue)
 
-    let startTime = seconds
+    let remainingSeconds = seconds
     if (!isTimerOn && seconds > 0) {
       // declaring the TIME state into a new variable and mutate that instead => read up on CLOSURES
       let id = setInterval(() => {
-        startTime--
-        setSeconds(startTime)
+        remainingSeconds--
+        setSeconds(remainingSeconds)
       }, 1000)
       setIsTimerOn(true)
       setIntervalId(id)
