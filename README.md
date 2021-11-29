@@ -62,34 +62,9 @@ npm run dev
 
 The biggest hurdle was the creation of the set interval timer. I found that the state variable was caching, causing the `setInterval` timer to go down by 1 or 2 and not further.
 
-To combat this issue, a new variable was created using the state as a value, and within the `setInterval` function, I mutate that variable and setState to the new mutated value.
+~~To combat this issue, a new variable was created using the state as a value, and within the `setInterval` function, I mutate that variable and setState to the new mutated value.~~
 
-Example not working snippet:
-
-```
-const [state, setState] = useState(300)
-const exampleFunction = () => {
-    if (!isTimerOn && remainingTime > 0) {
-    let id = setInterval(() => {
-      setState(-1)
-    }, 1000)
-  }
-}
-```
-
-Example working code snippet:
-
-```
-const [state, setState] = useState(300)
-const exampleFunction = () => {
-  let remainingTime = state
-    if (!isTimerOn && remainingTime > 0) {
-    let id = setInterval(() => {
-      startTime--
-    }, 1000)
-  }
-}
-```
+Declared the `setInterval` state as `let` instead of `const` fixed the issue above.
 
 ## 🌟 Show your support
 
