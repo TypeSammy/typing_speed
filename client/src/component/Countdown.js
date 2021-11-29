@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Div = styled.div`
+const Timer = styled.div`
   display: flex;
   justify-content: center;
   color: var(--moss);
@@ -20,18 +20,21 @@ const P = styled.p`
   color: var(--moss);
 `
 
-function Countdown({ seconds, isTimerOn }) {
-  let displayMinutes = Math.floor(seconds / 60)
-  let displaySeconds = seconds % 60
+function Countdown({ seconds }) {
+  let calculatedMinutes = Math.floor(seconds / 60)
+  let calculatedSeconds = seconds % 60
+
+  const handleTimeDisplay = () => {
+    let displaySeconds = calculatedSeconds < 10 ? `0${calculatedSeconds}` : calculatedSeconds
+    return `0${calculatedMinutes}:${displaySeconds}`
+  }
 
   return (
-    <Div >
-      <P>Timer </P>
-      <P>0{displayMinutes}:{displaySeconds === 0 ? '00' : displaySeconds}</P>
-    </Div>
+    <Timer>
+      <P>Timer</P>
+      <P>{handleTimeDisplay()}</P>
+    </Timer>
   )
 }
 
 export default Countdown
-
-// id={isTimerOn ? null : 'hidden'}

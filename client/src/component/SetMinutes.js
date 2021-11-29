@@ -17,7 +17,7 @@ const Button = styled.button`
   }
 `
 
-const Div = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,11 +32,11 @@ const Div = styled.div`
 
 function SetMinutes({ getParagraphs, btnDisplay }) {
   return (
-    <Div className='SetTimerBtn' id={btnDisplay ? null : 'hidden'}>
+    <ButtonContainer className='SetTimerBtn' id={btnDisplay ? null : 'hidden'}>
       <Button onClick={() => getParagraphs(1)}>ONE MINUTE</Button>
       <Button onClick={() => getParagraphs(3)}>THREE MINUTES</Button>
       <Button onClick={() => getParagraphs(5)}>FIVE MINUTES</Button>
-    </Div>
+    </ButtonContainer>
   )
 }
 

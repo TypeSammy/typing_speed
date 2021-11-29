@@ -8,7 +8,7 @@ const Section = styled.section`
   margin: 0 auto;
 `
 
-const Div = styled.div`
+const ParagraphsContainer = styled.div`
   width: 70%;
   height: 480px;
   margin: 0 auto;
@@ -23,7 +23,7 @@ const Div = styled.div`
   color: rgb(121 85 72);
 `
 
-const Textarea = styled.textarea`
+const InputArea = styled.textarea`
   height: 480px;
   margin: 0 auto;
   width: 85%;
@@ -39,14 +39,13 @@ const Textarea = styled.textarea`
   line-height: 1.8em;
 `
 
-const Span = styled.span`
+const TextColor = styled.span`
   border-radius: 4px;
   border: 1px solid var(--khaki);
   padding: 0 2px;
 `
 
 function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput }) {
-  // const splitParagraph = paragraphs.split('')
   const correctCol = 'rgb(189 223 177)'
   const incorrectCol = 'rgb(252 186 164)'
 
@@ -56,37 +55,27 @@ function TextArea({ paragraphs, userInput, typingDisplay, handleUserInput }) {
 
   return (
     <Section className='game-container' id={typingDisplay ? null : 'hidden'}>
-      <Div className='paragraphs'>
+      <ParagraphsContainer className='paragraphs'>
         {paragraphs.map((string, i) => {
           let color = ''
           if (i < userInput.length) {
             string === userInput[i] ? color = correctCol : color = incorrectCol
           }
           return (
-            <Span
+            <TextColor
               className='letter'
               style={{ backgroundColor: color }}
               key={i + string}>{string}
-            </Span>
+            </TextColor>
           )
         })}
-      </Div>
-      <Textarea
+      </ParagraphsContainer>
+      <InputArea
         className='text-input'
         onChange={handleUserInput}
-      ></Textarea>
+      ></InputArea>
     </Section>
   )
 }
 
 export default TextArea
-
-// To adjust height of paragraphs:
-// document.querySelector('.paragraphs').scrollTop = 160
-// 160 will move top line up to display the next
-// +160 every time ???? figure out
-
-// To get dimension of text area:
-// document.querySelector('.text-input').clientWidth
-
-// us .focus to access the textarea after button click

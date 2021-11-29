@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-const H2 = styled.h2`
+const Title = styled.h2`
   color: var(--moss);
   margin: 0;
   font-size: 5em;
   font-family: 'Abril Fatface';
 `
 
-const Div = styled.div`
+const StatisticsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -54,11 +54,11 @@ function Statistics({ statistics, statsDisplay, setMinutesDisplay, setStatsDispl
   }
 
   return (
-    <Div id={statsDisplay ? null : 'hidden'}>
-      <H2>Time's up!</H2>
+    <StatisticsContainer id={statsDisplay ? null : 'hidden'}>
+      <Title>Time's up!</Title>
       <p>You typed with <Highlight>{wpm}</Highlight> WPM with <Highlight>{accuracy}%</Highlight> accuracy.</p>
       <Button onClick={again}>TRY AGAIN</Button>
-    </Div>
+    </StatisticsContainer>
   )
 }
 

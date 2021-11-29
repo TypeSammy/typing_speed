@@ -1,11 +1,11 @@
-import './App.css';
+import '../style/App.css';
 import { useState } from 'react'
-import SetMinutes from './component/SetMinutes.js'
-import TextArea from './component/TextArea.js'
-import Countdown from "./component/Countdown"
+import SetMinutes from './SetMinutes.js'
+import TextArea from './TextArea.js'
+import Countdown from "./Countdown"
 import axios from 'axios'
 import styled from 'styled-components'
-import Statistics from './component/Statistics'
+import Statistics from './Statistics'
 
 const Section = styled.section`
   text-align: -webkit-center;
@@ -13,7 +13,7 @@ const Section = styled.section`
   top: -60px;
 `
 
-const H1 = styled.h1`
+const Heading = styled.h1`
   color: var(--chocolate);
   margin: 0;
   font-size: 17em;
@@ -21,7 +21,7 @@ const H1 = styled.h1`
   font-weight: 200;
 `
 
-const H2 = styled.h2`
+const SubHeading = styled.h2`
   color: var(--chocolate);
   margin: 0;
   font-size: 4em;
@@ -32,13 +32,13 @@ const H2 = styled.h2`
   top: -70px;
 `
 
-const Div = styled.div`
+const Container = styled.div`
   position: absolute;
   left: 0;
   right: 0;
   top: 260px;
 `
-const BottomDiv = styled.div`
+const BackgroundContainer = styled.div`
   position: relative;
   left: 0;
   right: 0;
@@ -46,11 +46,12 @@ const BottomDiv = styled.div`
   z-index: -1;
 `
 
+const defaultStats = {
+  wpm: 0,
+  accuracy: 0
+}
+
 function App() {
-  const defaultStats = {
-    wpm: 0,
-    accuracy: 0
-  }
   // State for typing speed
   const [paragraphs, setParagraphs] = useState([])
   const [userInput, setUserInput] = useState([])
@@ -62,7 +63,7 @@ function App() {
   // State for inacuracy count
   const [inaccuracteCount, setInaccurateCount] = useState(0)
   // State for countdown
-  const [seconds, setSeconds] = useState(null)
+  let [seconds, setSeconds] = useState(null)
   const [min, setMin] = useState(0)
   const [isTimerOn, setIsTimerOn] = useState(false)
   // State for interval ID
@@ -77,37 +78,43 @@ function App() {
     axios.get(`/api/paragraphs/${amount[min]}`)
       .then(res => {
         const array = res.data.map(responseObj => responseObj.paragraph)
-        // join to create 1 string, split to create an array with each 1 item as each string
         setParagraphs(array.join(' ').split(''))
       })
-      .then(setMinutesDisplay(false), setTextAreaDisplay(true)) // TODO check if i can use switch feature?
+      .then(setMinutesDisplay(false), setTextAreaDisplay(true))
       .then(setSeconds(min * 60), setMin(min))
   }
 
   function handleUserInput(e) {
     const newValue = e.target.value.split('')
-    setUserInput(newValue)
+    const inputType = e.nativeEvent.inputType
 
-    let remainingSeconds = seconds
+    setUserInput(newValue)
+    handleInterval()
+    inaccuracyCounter(newValue, inputType)
+    handleAutoScroll(inputType)
+
+  }
+
+  const handleInterval = () => {
     if (!isTimerOn && seconds > 0) {
-      // declaring the TIME state into a new variable and mutate that instead => read up on CLOSURES
       let id = setInterval(() => {
-        remainingSeconds--
-        setSeconds(remainingSeconds)
+        seconds--
+        setSeconds(seconds)
       }, 1000)
       setIsTimerOn(true)
       setIntervalId(id)
     }
+  }
 
-    // increment inaccurate amount
-    const inputType = e.nativeEvent.inputType
+  const inaccuracyCounter = (newValue, inputType) => {
     newValue.forEach((letter, i) => {
       if (inputType === 'insertText') {
         letter !== paragraphs[i] ? setInaccurateCount(inaccuracteCount + 1) : setInaccurateCount(inaccuracteCount)
       }
     })
+  }
 
-    // handles auto scrolling
+  const handleAutoScroll = (inputType) => {
     const allSpanLetter = document.querySelectorAll('.letter')
     const currentInputLocation = allSpanLetter[userInput.length].getBoundingClientRect().right
     const nextInputLocation = allSpanLetter[userInput.length + 1].getBoundingClientRect().right
@@ -117,7 +124,6 @@ function App() {
     } else if (currentInputLocation > nextInputLocation) {
       document.querySelector('.paragraphs').scrollTop += 46
     }
-
   }
 
   // Checks if there is an Interval ID & if the time has reached 0
@@ -148,8 +154,8 @@ function App() {
 
   return (
     <Section>
-      <H1>TYPING</H1>
-      <Div className='content-container'>
+      <Heading>TYPING</Heading>
+      <Container className='content-container'>
         <SetMinutes
           getParagraphs={getParagraphs}
           btnDisplay={minutesDisplay}
@@ -167,15 +173,15 @@ function App() {
           setMinutesDisplay={setMinutesDisplay}
           setStatsDisplay={setStatsDisplay}
         />
-      </Div>
-      <BottomDiv>
-        <H1>SPEED</H1>
-        <H2>TEST</H2>
+      </Container>
+      <BackgroundContainer>
+        <Heading>SPEED</Heading>
+        <SubHeading>TEST</SubHeading>
         <Countdown
           seconds={seconds}
           isTimerOn={isTimerOn}
         />
-      </BottomDiv>
+      </BackgroundContainer>
     </Section>
   )
 }
